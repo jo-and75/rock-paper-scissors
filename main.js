@@ -5,7 +5,7 @@ let getComputerChoice = ["rock","paper","scissors"][Math.floor(Math.random()*3)]
 
 console.log(getComputerChoice); 
 
-let getHumanChoice = prompt("Which weapon are you choosing today?") 
+let getHumanChoice = prompt("Which weapon are you choosing today?").toLowerCase()
 switch(getHumanChoice){ 
     case "rock": 
     console.log(); 
@@ -25,6 +25,4 @@ switch(getHumanChoice){
 
 console.log(getHumanChoice);  
 
-let humanScore = 0; 
-let computerScore = 0;  
-console.log(humanScore)
+ 
