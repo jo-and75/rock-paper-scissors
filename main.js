@@ -1,6 +1,7 @@
 console.log("Hello, World!") 
 
 
-let getComputerChoice = random.choice("rock","paper","scissors")
+let getComputerChoice = ["rock","paper","scissors"][Math.floor(Math.random()*3)];
 
-console.log(getComputerChoice);
+console.log(getComputerChoice); 
+console.log(getComputerChoice)
