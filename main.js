@@ -23,4 +23,8 @@ switch(getHumanChoice){
     console.log("This doesn't run"); 
 }
 
-console.log(getHumanChoice); 
+console.log(getHumanChoice);  
+
+let humanScore = 0; 
+let computerScore = 0;  
+console.log(humanScore)
