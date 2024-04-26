@@ -3,8 +3,6 @@ console.log("Hello, World!")
 
 let getComputerChoice = ["rock","paper","scissors"][Math.floor(Math.random()*3)];
 
-console.log(getComputerChoice); 
-
 let getHumanChoice = prompt("Which weapon are you choosing today?").toLowerCase()
     switch(getHumanChoice){ 
         case "rock": 
@@ -23,16 +21,20 @@ let getHumanChoice = prompt("Which weapon are you choosing today?").toLowerCase(
         console.log("This doesn't run"); 
     }
 
-console.log(getHumanChoice);  
+let humanScore = 0; 
+let computerScore = 0; 
 
 function playRound(humanChoice,computerChoice){ 
-if(humanSelection>computerSelection) { 
-    console.log("You Win!!!" + " " + humanSelection + "beats" + " " + computerSelection + ".")
-} else{ 
-    console.log("You lose!" + " " + computerSelection + "beats" + " " + humanSelection + ".")
-}
-
+    if(humanSelection > computerSelection) {   
+        ++humanScore;
+        console.log("You Win!!!" + " " + humanSelection + " " + "beats" + " " + computerSelection + ".");
+    } else{  
+        ++computerScore; 
+        console.log("You lose!" + " " + computerSelection + " " + "beats" + " " + humanSelection + ".");
+    }
 } 
 
-const humanSelection = getHumanChoice().toLowerCase(); 
-const computerSelection = getComputerChoice(); 
+const humanSelection = getHumanChoice; 
+const computerSelection = getComputerChoice; 
+
+playRound(humanSelection,computerSelection); 
