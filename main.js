@@ -3,46 +3,41 @@ console.log("Hello, World!")
 
 let getComputerChoice = ["rock","paper","scissors"][Math.floor(Math.random()*3)];
 
-let getHumanChoice = prompt("Which weapon are you choosing today?").toLowerCase()
+let getHumanChoice = prompt("Which weapon are you choosing today?").toLowerCase();
     switch(getHumanChoice){ 
         case "rock": 
-        console.log(); 
         break; 
 
-        case "paper": 
-        console.log(); 
+        case "paper":  
         break;  
 
-        case "scissors": 
-        console.log(); 
+        case "scissors":  
         break;  
 
         default: 
-        console.log("This doesn't run"); 
+        console.log("Not a valid response"); 
     }
 
+let humanScore = 0; 
+let computerScore = 0; 
 
-const humanSelection = getHumanChoice; 
-const computerSelection = getComputerChoice; 
-
-
-
-function playGame() { 
-
-    let humanScore = 0; 
-    let computerScore = 0; 
-    
-    function playRound(humanChoice,computerChoice){ 
-        if(humanSelection > computerSelection) {   
-            ++humanScore;
-            console.log("You Win!!!" + " " + humanSelection + " " + "beats" + " " + computerSelection + ".");
-        } else{  
-            ++computerScore; 
-            console.log("You lose!" + " " + computerSelection + " " + "beats" + " " + humanSelection + ".");
-        }
+function playRound(humanChoice,computerChoice){  
+    if(humanSelection == "rock" && computerSelection == "rock"||humanSelection == "paper" && computerSelection == "paper"||humanSelection == "scissors" && computerSelection == "scissors"){ 
+        console.log("It's a tie, play again"); 
+    }else if(humanSelection == "rock" && computerSelection == "scissors"||humanSelection == "scissors" && computerSelection == "paper"||humanSelection == "paper" && computerSelection == "rock"){    
+        console.log("You Win!!!" + " " + humanSelection + " " + "beats" + " " + computerSelection + "."); 
+        console.log(++humanScore);   
+    }else{  
+        console.log("You lose!" + " " + computerSelection + " " + "beats" + " " + humanSelection + "."); 
+        console.log(++computerScore); 
     } 
-    
-    playRound(humanSelection,computerSelection);  
+  
+  } 
+  
+  const humanSelection = getHumanChoice; 
+  const computerSelection = getComputerChoice; 
+  
+  playRound(humanSelection,computerSelection);  
 
-} 
+
 
