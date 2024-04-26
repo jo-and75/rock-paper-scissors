@@ -12,10 +12,7 @@ let getHumanChoice = prompt("Please select either rock, paper, or scissors. 🤘
         break;  
 
         case "scissors":  
-        break;  
-
-        default: 
-        console.log("Not a valid response"); 
+        break;   
     }
 
 let humanScore = 0; 
@@ -27,7 +24,9 @@ function playRound(humanChoice,computerChoice){
     }else if(humanSelection == "rock" && computerSelection == "scissors"||humanSelection == "scissors" && computerSelection == "paper"||humanSelection == "paper" && computerSelection == "rock"){    
         console.log("You Win!!!" + " " + humanSelection + " " + "beats" + " " + computerSelection + "."); 
         console.log("Your Score:" + " " + ++humanScore + " " + "&" + " " + "Computer Score:"+ " "+ computerScore);   
-    }else{  
+    }else if(humanSelection.toLowerCase !== "rock"||humanSelection.toLowerCase !=="paper"||humanSelection.toLowerCase !== "scissors"){
+        console.log("Warning: The provided response is not valid. Please ensure your input adheres to the expected format or guidelines. 🚫🔍") 
+    }else{    
         console.log("You lose!" + " " + computerSelection + " " + "beats" + " " + humanSelection + "."); 
         console.log("Computer Score:" + " " + ++computerScore + " " + "&" + " " + "Your Score:"+ " "+ humanScore); 
     }   
@@ -38,8 +37,8 @@ const computerSelection = getComputerChoice;
 
 playRound(humanSelection,computerSelection);  
 
-function playGame(x,y){  
-    return x*y; 
+function playGame(){     
+
     let humanScore = 0; 
     let computerScore = 0; 
 
@@ -54,6 +53,5 @@ function playGame(x,y){
             console.log("Computer Score:" + " " + ++computerScore + " " + "&" + " " + "Your Score:"+ " "+ humanScore); 
         }   
     }    
-
-}
+} 
 
