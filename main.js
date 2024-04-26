@@ -21,20 +21,28 @@ let getHumanChoice = prompt("Which weapon are you choosing today?").toLowerCase(
         console.log("This doesn't run"); 
     }
 
-let humanScore = 0; 
-let computerScore = 0; 
-
-function playRound(humanChoice,computerChoice){ 
-    if(humanSelection > computerSelection) {   
-        ++humanScore;
-        console.log("You Win!!!" + " " + humanSelection + " " + "beats" + " " + computerSelection + ".");
-    } else{  
-        ++computerScore; 
-        console.log("You lose!" + " " + computerSelection + " " + "beats" + " " + humanSelection + ".");
-    }
-} 
 
 const humanSelection = getHumanChoice; 
 const computerSelection = getComputerChoice; 
 
-playRound(humanSelection,computerSelection); 
+
+
+function playGame() { 
+
+    let humanScore = 0; 
+    let computerScore = 0; 
+    
+    function playRound(humanChoice,computerChoice){ 
+        if(humanSelection > computerSelection) {   
+            ++humanScore;
+            console.log("You Win!!!" + " " + humanSelection + " " + "beats" + " " + computerSelection + ".");
+        } else{  
+            ++computerScore; 
+            console.log("You lose!" + " " + computerSelection + " " + "beats" + " " + humanSelection + ".");
+        }
+    } 
+    
+    playRound(humanSelection,computerSelection);  
+
+} 
+
