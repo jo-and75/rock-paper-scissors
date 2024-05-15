@@ -5,13 +5,13 @@ let computerScore = 0;
 
 let playGame = function(rounds){  //rounds is a parameter for playGame  
 
-    for(let i = 0; i < rounds; i++){ 
+
         const humanSelection = prompt("Please select either rock, paper, or scissors. 🤘📄✂️").toLowerCase();
         //Was declared in loop to bring up the prompt after each round
         const computerSelection = ["rock","paper","scissors"][Math.floor(Math.random()*3)];   
         //Declared in loop so it generates new string after each round
         playRound(humanSelection,computerSelection); 
-        } 
+        
     
     function playRound(humanSelection,computerSelection){   
 
@@ -34,7 +34,7 @@ let playGame = function(rounds){  //rounds is a parameter for playGame
     } 
 }
 
-playGame(5) 
+//playGame(5) 
 
 if(humanScore > computerScore){ 
     console.log("You Win!!" + " " + "Your Score:" + " " + humanScore + " " + "&" + "Computer Score:" + " " + computerScore); 
