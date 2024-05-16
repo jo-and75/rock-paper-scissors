@@ -1,45 +1,54 @@
 console.log("Welcome, 🤘📄✂️") 
  
 let humanScore = 0; 
-let computerScore = 0;
+let computerScore = 0;  
 
-let playGame = function(rounds){  //rounds is a parameter for playGame  
+const buttons = document.querySelectorAll("button"); 
+let humanSelection;   
+let computerSelection;
+  
+let scores = document.getElementById("scores"); 
+scores.setAttribute("style","display:flex; gap:50px; margin:10px 0;")
 
+const results = document.getElementById("results");  
+results.setAttribute("style","margin: 10px 0" ) 
 
-        const humanSelection = prompt("Please select either rock, paper, or scissors. 🤘📄✂️").toLowerCase();
-        //Was declared in loop to bring up the prompt after each round
-        const computerSelection = ["rock","paper","scissors"][Math.floor(Math.random()*3)];   
-        //Declared in loop so it generates new string after each round
-        playRound(humanSelection,computerSelection); 
+buttons.forEach((button) => { 
+    button.addEventListener("click", () => { 
+        humanSelection = button.textContent  
+        computerSelection = ["rock","paper","scissors"][Math.floor(Math.random()*3)];    
+        //on each click, computerSelection randomizes, fixes the issue of not being able to click buttons consecutively. 
+        playRound(humanSelection); 
+    });
+}); 
+
         
-    
-    function playRound(humanSelection,computerSelection){   
+    function playRound(humanSelection){   
 
-            if(humanSelection === computerSelection){ 
-            console.log("It's a tie. Both chose"+ " "+ humanSelection); 
+            if(humanSelection == computerSelection){ 
+                results.textContent = "Results: It's a tie. Both chose"+ " "+ humanSelection; 
             }else if(humanSelection == "rock" && computerSelection == "scissors"||
             humanSelection == "scissors" && computerSelection == "paper"||
             humanSelection == "paper" && computerSelection == "rock"){    
-                console.log("You Win!!!" + " " + humanSelection + " " + "beats" + " " + computerSelection + ".");   
-                ++humanScore; 
-            }else if(humanSelection.toLowerCase() !== "rock" && humanSelection.toLowerCase() !=="paper" && humanSelection.toLowerCase() !== "scissors"){
-                console.log("Warning: The provided response is not valid. Please ensure your input adheres to the expected format or guidelines. 🚫🔍") 
-            }else{    
-                console.log("You lose!" + " " + computerSelection + " " + "beats" + " " + humanSelection + ".");   
+                results.textContent = "Results: You Win!!!" + " " + humanSelection + " " + "beats" + " " + computerSelection + ".";   
+                ++humanScore;
+            }else if(computerSelection == "rock" && humanSelection == "scissors"||
+            computerSelection == "scissors" && humanSelection == "paper"||
+            computerSelection == "paper" && humanSelection == "rock"){    
+                results.textContent = "Results: You lose!" + " " + computerSelection + " " + "beats" + " " + humanSelection + ".";   
                 ++computerScore; 
-            }      
-        let humanTotal = humanScore; 
-        let computerTotal = computerScore;      
-                    
-    } 
-}
+            }          
+    }  
+        
+            
 
-//playGame(5) 
 
-if(humanScore > computerScore){ 
-    console.log("You Win!!" + " " + "Your Score:" + " " + humanScore + " " + "&" + "Computer Score:" + " " + computerScore); 
-}else if(humanScore == computerScore){ 
-    console.log ("You tied, not bad" + " " + "Your Score:" + " " + humanScore + " " + "&" + " " + "Computer Score:" + " " + computerScore);    
-}else{ 
-    console.log("You Lose 😞"+ " " + "Your Score:" + " " + humanScore + " " + "&" + " " + "Computer Score:" + " " + computerScore);
-}   //Added after playGame is called so it doesn't appear after each round
+/*
+if(humanTotal > computerTotal){ 
+    console.log("You Win!!" + " " + "Your Score:" + " " + humanTotal + " " + "&" + "Computer Score:" + " " + computerTotal); 
+}else if(humanTotal == computerTotal){ 
+    console.log ("You tied, not bad" + " " + "Your Score:" + " " + humanTotal + " " + "&" + " " + "Computer Score:" + " " + computerTotal);    
+}else if(humanTotal > computerTotal){ 
+    console.log("You Lose 😞"+ " " + "Your Score:" + " " + humanTotal + " " + "&" + " " + "Computer Score:" + " " + computerTotal);
+}   //Added after playGame is called so it doesn't appear after each round 
+*/
