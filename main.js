@@ -1,5 +1,8 @@
-console.log("Welcome, 🤘📄✂️") 
- 
+console.log("Welcome, 🤘📄✂️")  
+
+let humanTotal;
+let computerTotal; 
+
 let humanScore = 0; 
 let computerScore = 0;   
 let roundsPlayed = 0;
@@ -15,11 +18,7 @@ const results = document.getElementById("results");
 results.setAttribute("style","margin: 10px 0" )   
 
 const yourScore = document.getElementById("your-score");   
-yourScore.textContent = "Your Score: " + humanScore
-const aiScore = document.getElementById("computer-score");  
-aiScore.textContent = "Computer Score: " + computerScore
-
-
+const aiScore = document.getElementById("computer-score");   
 const finalResults = document.getElementById("final-results"); 
 
 
@@ -53,11 +52,17 @@ buttons.forEach((button) => {
             computerSelection == "paper" && humanSelection == "rock"){    
                 results.textContent = "Results: You lose!" + " " + computerSelection + " " + "beats" + " " + humanSelection + ".";   
                 ++computerScore; 
-            }          
-    }  
-        
-            
+            }            
 
+            humanTotal = humanScore; 
+            computerTotal = computerScore; 
+    
+            yourScore.textContent = "Your Score: " + humanScore;
+            aiScore.textContent = "Computer Score: " + computerScore;
+    }  
+    
+    
+ 
 
 /*
 if(humanTotal > computerTotal){ 
