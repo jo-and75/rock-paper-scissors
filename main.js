@@ -12,7 +12,13 @@ let scores = document.getElementById("scores");
 scores.setAttribute("style","display:flex; gap:50px; margin:10px 0;")
 
 const results = document.getElementById("results");  
-results.setAttribute("style","margin: 10px 0" )  
+results.setAttribute("style","margin: 10px 0" )   
+
+const yourScore = document.getElementById("your-score");   
+yourScore.textContent = "Your Score: " + humanScore
+const aiScore = document.getElementById("computer-score");  
+aiScore.textContent = "Computer Score: " + computerScore
+
 
 const finalResults = document.getElementById("final-results"); 
 
