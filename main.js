@@ -23,15 +23,11 @@ const finalResults = document.getElementById("final-results");
 const restartGame = document.getElementById("restart-game");   
 
 
-function again(event) {  
-    event.stopPropagation();
+function again() {  
     window.location.reload(); 
-
 }
 
 restartGame.addEventListener("click", again)
-
-
 
 
 
