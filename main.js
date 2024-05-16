@@ -20,32 +20,44 @@ results.setAttribute("style","margin: 10px 0" )
 const yourScore = document.getElementById("your-score");   
 const aiScore = document.getElementById("computer-score");   
 const finalResults = document.getElementById("final-results");  
-const restartGame = document.getElementById("restart-game"); 
+const restartGame = document.getElementById("restart-game");   
+
+
+function again() { 
+    window.location.reload();
+}
+
+restartGame.addEventListener("click", again);
+
+function playRoundsLogic(event) {   
+    roundsPlayed++; 
+    const clickedButton = event.target
+    humanSelection = clickedButton.textContent 
+    computerSelection = ["rock","paper","scissors"][Math.floor(Math.random()*3)];    
+    //on each click, computerSelection randomizes, fixes the issue of not being able to click buttons consecutively.  
+    playRound(humanSelection);   
+   
+    if (roundsPlayed >= 5) { 
+        buttons.forEach(button => {
+            button.removeEventListener("click", playRoundsLogic); 
+            button.disabled = true;  
+
+            if(humanTotal > computerTotal){ 
+                finalResults.textContent = "Final Scores: YOU ARE THE WINNER ! 🎉"; 
+            }else if(humanTotal == computerTotal){ 
+                finalResults.textContent = "Final Scores: YOU TIED, WHICH ISN'T TOO SHABBY";    
+            }else if(humanTotal > computerTotal){ 
+                finalResults.textContent = "Final Scores: FUNFORTUNATELY, YOU LOST 😔";
+            }
+        });    
+    }
+
+    
+}
 
 
 buttons.forEach((button) => { 
-    button.addEventListener("click", () => {  
-        roundsPlayed++;
-        humanSelection = button.textContent  
-        computerSelection = ["rock","paper","scissors"][Math.floor(Math.random()*3)];    
-        //on each click, computerSelection randomizes, fixes the issue of not being able to click buttons consecutively.  
-        playRound(humanSelection);   
-       
-        if (roundsPlayed >= 5) { 
-            buttons.forEach(button => {
-                button.removeEventListener("click", this); 
-                button.disabled = true;  
-
-                if(humanTotal > computerTotal){ 
-                    finalResults.textContent = "Final Scores: YOU ARE THE WINNER ! 🎉"; 
-                }else if(humanTotal == computerTotal){ 
-                    finalResults.textContent = "Final Scores: YOU TIED, WHICH ISN'T TOO SHABBY";    
-                }else if(humanTotal > computerTotal){ 
-                    finalResults.textContent = "Final Scores: FUNFORTUNATELY, YOU LOST 😔";
-                }
-            });    
-        }
-    }); 
+    button.addEventListener("click", playRoundsLogic); 
 }); 
 
 
@@ -74,5 +86,4 @@ buttons.forEach((button) => {
     }  
     
     
- 
 
