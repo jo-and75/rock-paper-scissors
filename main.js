@@ -1,7 +1,8 @@
 console.log("Welcome, 🤘📄✂️") 
  
 let humanScore = 0; 
-let computerScore = 0;  
+let computerScore = 0;   
+let roundsPlayed = 0;
 
 const buttons = document.querySelectorAll("button"); 
 let humanSelection;   
@@ -11,14 +12,23 @@ let scores = document.getElementById("scores");
 scores.setAttribute("style","display:flex; gap:50px; margin:10px 0;")
 
 const results = document.getElementById("results");  
-results.setAttribute("style","margin: 10px 0" ) 
+results.setAttribute("style","margin: 10px 0" )  
+
+const finalResults = document.getElementById("final-results"); 
+
 
 buttons.forEach((button) => { 
     button.addEventListener("click", () => { 
         humanSelection = button.textContent  
         computerSelection = ["rock","paper","scissors"][Math.floor(Math.random()*3)];    
-        //on each click, computerSelection randomizes, fixes the issue of not being able to click buttons consecutively. 
-        playRound(humanSelection); 
+        //on each click, computerSelection randomizes, fixes the issue of not being able to click buttons consecutively.  
+
+        if(roundsPlayed >5){ 
+    
+        }
+
+        playRound(humanSelection);   
+        roundsPlayed++
     });
 }); 
 
