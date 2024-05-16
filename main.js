@@ -19,23 +19,35 @@ results.setAttribute("style","margin: 10px 0" )
 
 const yourScore = document.getElementById("your-score");   
 const aiScore = document.getElementById("computer-score");   
-const finalResults = document.getElementById("final-results"); 
+const finalResults = document.getElementById("final-results");  
+const restartGame = document.getElementById("restart-game"); 
 
 
 buttons.forEach((button) => { 
-    button.addEventListener("click", () => { 
+    button.addEventListener("click", () => {  
+        roundsPlayed++;
         humanSelection = button.textContent  
         computerSelection = ["rock","paper","scissors"][Math.floor(Math.random()*3)];    
         //on each click, computerSelection randomizes, fixes the issue of not being able to click buttons consecutively.  
-
-        if(roundsPlayed >5){ 
-    
-        }
-
         playRound(humanSelection);   
-        roundsPlayed++
-    });
+       
+        if (roundsPlayed >= 5) { 
+            buttons.forEach(button => {
+                button.removeEventListener("click", this); 
+                button.disabled = true;  
+
+                if(humanTotal > computerTotal){ 
+                    finalResults.textContent = "Final Scores: YOU ARE THE WINNER ! 🎉"; 
+                }else if(humanTotal == computerTotal){ 
+                    finalResults.textContent = "Final Scores: YOU TIED, WHICH ISN'T TOO SHABBY";    
+                }else if(humanTotal > computerTotal){ 
+                    finalResults.textContent = "Final Scores: FUNFORTUNATELY, YOU LOST 😔";
+                }
+            });    
+        }
+    }); 
 }); 
+
 
         
     function playRound(humanSelection){   
@@ -64,12 +76,3 @@ buttons.forEach((button) => {
     
  
 
-/*
-if(humanTotal > computerTotal){ 
-    console.log("You Win!!" + " " + "Your Score:" + " " + humanTotal + " " + "&" + "Computer Score:" + " " + computerTotal); 
-}else if(humanTotal == computerTotal){ 
-    console.log ("You tied, not bad" + " " + "Your Score:" + " " + humanTotal + " " + "&" + " " + "Computer Score:" + " " + computerTotal);    
-}else if(humanTotal > computerTotal){ 
-    console.log("You Lose 😞"+ " " + "Your Score:" + " " + humanTotal + " " + "&" + " " + "Computer Score:" + " " + computerTotal);
-}   //Added after playGame is called so it doesn't appear after each round 
-*/
