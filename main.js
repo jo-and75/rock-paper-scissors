@@ -1,4 +1,4 @@
-console.log("Welcome, 🤘📄✂️")  
+
 
 let humanTotal;
 let computerTotal; 
