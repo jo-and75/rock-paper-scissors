@@ -51,11 +51,10 @@ buttons.forEach((button) => {
                     finalResults.textContent = "Final Scores: YOU ARE THE WINNER ! 🎉"; 
                 }else if(humanTotal == computerTotal){ 
                     finalResults.textContent = "Final Scores: YOU TIED, WHICH ISN'T TOO SHABBY";    
-                }else if(humanTotal > computerTotal){ 
-                    finalResults.textContent = "Final Scores: FUNFORTUNATELY, YOU LOST 😔";
+                }else{ 
+                    finalResults.textContent = "Final Scores: UNFORTUNATELY, YOU LOST 😔";
                 }
             };    
-
     }); 
 }); 
 
